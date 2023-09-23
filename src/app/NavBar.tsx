@@ -6,35 +6,34 @@ import HouseIcon from "../../public/assets/house-svgrepo-com.svg"
 interface Page {
   text: string;
   route: string;
-  current: boolean;
+}
+export const enum Route {
+  HOME = '/',
+  SUMMARY = '/summary',
+  FEEDBACK = '/feedback',
+  RESULT = '/result',
 }
 
 const initialPages: Page[] = [{
   text: "Home",
-  route: "/",
-  current: true,
+  route: Route.HOME,
 },
 {
   text: "Summary",
-  route: "/summary",
-  current: false,
+  route: Route.SUMMARY,
 },
 {
   text: "Result",
-  route: "/result",
-  current: false,
+  route: Route.RESULT,
 }, {
   text: "Feedback",
-  route: "/feedback",
-  current: false,
+  route: Route.FEEDBACK,
 }
 ]
 
 export default function NavBar() {
-  const [pages, setPages] = useState<Page[]>(initialPages)
-  const onClickPage = (curPage: Page) => {
-    setPages(initialPages.map((page: Page) => ({ ...page, current: curPage.route === page.route })))
-  }
+  const [selectedPage, setSelectedPage] = useState<Page>({ text: "Home", route: Route.HOME })
+
   return (
     <nav className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="https://google.com" className="flex items-center">
@@ -43,16 +42,15 @@ export default function NavBar() {
       </a>
       <div id="navbar-default">
         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white ">
-          {pages.map(p => (
+          {initialPages.map(p => (
             <li key={p.route}>
-              <Link key={p.route} href={p.route} className={`block py-2 pl-3 pr-4 rounded md:p-0 ${p.current ? "text-blue-700" : ""}`} aria-current="page" onClick={() => {
-                onClickPage(p)
+              <Link key={p.route} href={p.route} className={`block py-2 pl-3 pr-4 rounded md:p-0 ${p.route == selectedPage.route ? "text-blue-700" : ""}`} aria-current="page" onClick={() => {
+                setSelectedPage(p)
               }}>{p.text}</Link>
             </li>
           ))}
         </ul>
       </div>
-
     </nav >
   )
 }
