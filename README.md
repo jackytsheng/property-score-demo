@@ -1,5 +1,4 @@
 ## Library/Framework Used
-- Headless UI
 - Next.js
 - Tailwind css
 

@@ -1,30 +1,55 @@
+"use client"
 import Link from "next/link"
+import Image from "next/image"
+import { useState } from "react"
+import HouseIcon from "../../public/assets/house-svgrepo-com.svg"
+interface Page {
+  text: string;
+  route: string;
+  current: boolean;
+}
 
+const initialPages: Page[] = [{
+  text: "Home",
+  route: "/",
+  current: true,
+},
+{
+  text: "Summary",
+  route: "/summary",
+  current: false,
+},
+{
+  text: "Result",
+  route: "/result",
+  current: false,
+}, {
+  text: "Feedback",
+  route: "/feedback",
+  current: false,
+}
+]
 
 export default function NavBar() {
+  const [pages, setPages] = useState<Page[]>(initialPages)
+  const onClickPage = (curPage: Page) => {
+    setPages(initialPages.map((page: Page) => ({ ...page, current: curPage.route === page.route })))
+  }
   return (
     <nav className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="https://google.com" className="flex items-center">
-        <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
+        <Image src={HouseIcon} className="pr-2" alt="House Logo" />
         <span className="self-center text-2xl font-semibold whitespace-nowrapd">Property Score</span>
       </a>
       <div id="navbar-default">
         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white ">
-          <li>
-            <Link href="/login" className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Log in</Link>
-          </li>
-          <li>
-            <Link href="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</Link>
-          </li>
-          <li>
-            <Link href="/summary" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:bg-transparent">Summary</Link>
-          </li>
-          <li>
-            <Link href="/result" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Result</Link>
-          </li>
-          <li>
-            <Link href="/feedback" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Feedback</Link>
-          </li>
+          {pages.map(p => (
+            <li key={p.route}>
+              <Link key={p.route} href={p.route} className={`block py-2 pl-3 pr-4 rounded md:p-0 ${p.current ? "text-blue-700" : ""}`} aria-current="page" onClick={() => {
+                onClickPage(p)
+              }}>{p.text}</Link>
+            </li>
+          ))}
         </ul>
       </div>
 
