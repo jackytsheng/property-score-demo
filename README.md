@@ -7,6 +7,7 @@
 Title & Meta data
 login page
 msw to mock api
+github action to properly do cicd
 
 ## API Designed
 /summary [POST]
