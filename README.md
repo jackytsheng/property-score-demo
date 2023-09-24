@@ -2,6 +2,11 @@
 - Next.js
 - Tailwind css
 
+
+## TODO:
+Title & Meta data
+login page
+
 ## Getting Started
 
 First, run the development server:
