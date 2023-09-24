@@ -35,7 +35,7 @@ export default function Summary() {
         </Pill>
       </div>
       <div className="inline-flex w-4/5 md:w-auto flex-col items-stretch md:items-center gap-2 md:flex-row md:gap-5">
-        <button type="button" className={BUTTON_STYLE}>Resubmit</button>
+        <Link href="#" type="button" className={BUTTON_STYLE}>Resubmit</Link>
         <Link href={Route.RESULT} type="button" className={BUTTON_STYLE}>Generate Result</Link>
       </div>
     </Wrapper>
