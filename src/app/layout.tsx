@@ -21,7 +21,7 @@ export default function RootLayout({
         <meta property="og:title" content="Property Scoring" key="title" />
       </Head>
       <body className={inter.className}>
-        <main className='h-screen dark:bg-gray-800 overflow-scroll'>
+        <main className='h-screen dark:bg-gray-800 overflow-y-scroll'>
           <NavBar />
           <ThemeToggler isDark={isDarkMode} toggle={setIsDarkMode} />
           {children}

@@ -5,6 +5,6 @@ export const Wrapper = ({
 }: {
     children: ReactNode
 }) =>
-(<div className="flex flex-col items-center justify-center p-10 md:p-24" >
+(<div className="flex flex-col items-center justify-center p-10 md:px-24 md:pt-10" >
     {children}
 </div>)
