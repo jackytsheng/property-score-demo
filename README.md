@@ -6,6 +6,13 @@
 ## TODO:
 Title & Meta data
 login page
+msw to mock api
+
+## API Designed
+/summary [POST]
+/result [POST]
+/feedback [POST]
+/login [POST]
 
 ## Getting Started
 
