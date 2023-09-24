@@ -1,0 +1,2 @@
+export const MODAL_STYLE = "font-medium border border-gray-100 rounded-lg bg-gray-50 p-4 md:p-0 mt-4 md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+export const INPUT_STYLE = "p-2.5 mb-4 w-full text-sm md:max-w-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-200 focus:ring-blue-700 focus:border-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-700 dark:focus:border-blue-700"
